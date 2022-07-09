@@ -109,6 +109,35 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    func search() {
+        if let city = searchTxtField.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            searchCities(cityName: city)
+        }
+    }
+    
+    func searchCities(cityName: String) {
+        WeatherService(urlString: Constant.getCityURL(cityName: cityName)).getCities() { results, err in
+            
+            if let results = results {
+                DispatchQueue.main.async {
+                    self.cities = results
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+    }
+    
+    @IBAction func deleteAllTapped(_ sender: Any) {
+        coreData.deleteAll()
+        viewedCity = coreData.loadItems()
+        tableView.reloadData()
+    }
+    
+    @IBAction func searchTapped(_ sender: Any) {
+        search()
+    }
+    
 }
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
@@ -175,11 +204,9 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         navigateToDetailView(indexPath: indexPath)
     }
     
-    
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == 0{
-            context.delete(viewedCity[indexPath.row])
+            coreData.deleteItem(indexPath: indexPath, viewedCity: viewedCity)
             viewedCity.remove(at: indexPath.row)
             coreData.saveItem()
             viewedCity = coreData.loadItems()
@@ -199,18 +226,18 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension WeatherViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let cityName = textField.text {
-            WeatherService(urlString: Constant.getCityURL(cityName: cityName)).getCities() { results, err in
-
-                if let results = results {
-                    DispatchQueue.main.async {
-                        self.cities = results
-                        self.tableView.reloadData()
-                    }
-                }
-            }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text == "" {
+            cities = []
+            tableView.reloadData()
+        } else {
+            search()
         }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        search()
         
         return true
     }

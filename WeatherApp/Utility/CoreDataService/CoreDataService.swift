@@ -21,12 +21,29 @@ class CoreDataService {
         }
     }
     
+    func deleteItem(indexPath: IndexPath, viewedCity: [CityDataModel]) {
+        context.delete(viewedCity[indexPath.row])
+    }
+    
+    func deleteAll() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CityDataModel")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(deleteRequest)
+            saveItem()
+        } catch let error as NSError {
+            print("error deleting context \(error)")
+        }
+    }
+    
     func loadItems() -> [CityDataModel] {
         let request: NSFetchRequest<CityDataModel> = CityDataModel.fetchRequest()
         do {
             viewedCity = try context.fetch(request)
-            viewedCity = viewedCity.suffix(10)
             viewedCity = viewedCity.sorted {$0.areaName! < $1.areaName!}
+            viewedCity = viewedCity.suffix(10)
+            
         } catch {
             print("error fetching data from context: \(error)")
         }

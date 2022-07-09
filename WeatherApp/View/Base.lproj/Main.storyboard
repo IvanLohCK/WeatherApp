@@ -20,14 +20,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="TxG-22-9qj">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Poi-2j-mUh">
-                                <rect key="frame" x="55" y="96" width="280" height="34"/>
-                                <color key="backgroundColor" systemColor="systemFillColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2zp-hv-ZBC">
-                                <rect key="frame" x="10" y="138" width="370" height="656"/>
+                                <rect key="frame" x="10" y="98" width="370" height="696"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherListViewCell" rowHeight="60" id="2dr-Ex-TgH" customClass="WeatherListViewCell" customModule="WeatherApp" customModuleProvider="target">
@@ -71,17 +65,35 @@
                             <constraint firstItem="TxG-22-9qj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8mq-BN-hOd"/>
                             <constraint firstItem="TxG-22-9qj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9HU-7S-QsX"/>
                             <constraint firstAttribute="bottom" secondItem="TxG-22-9qj" secondAttribute="bottom" id="GTb-Bh-I69"/>
-                            <constraint firstItem="Poi-2j-mUh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="KRa-ss-x2O"/>
                             <constraint firstItem="TxG-22-9qj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MtC-Gb-GKt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2zp-hv-ZBC" secondAttribute="trailing" constant="10" id="TAP-BA-j5L"/>
-                            <constraint firstItem="2zp-hv-ZBC" firstAttribute="top" secondItem="Poi-2j-mUh" secondAttribute="bottom" constant="8" id="f0M-t0-Gns"/>
+                            <constraint firstItem="2zp-hv-ZBC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="aG7-NF-4qx"/>
                             <constraint firstAttribute="bottom" secondItem="2zp-hv-ZBC" secondAttribute="bottom" constant="50" id="prS-dS-HaU"/>
                             <constraint firstItem="2zp-hv-ZBC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="qVt-aI-JTO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Poi-2j-mUh" secondAttribute="trailing" constant="55" id="yk9-de-zx4"/>
-                            <constraint firstItem="Poi-2j-mUh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="zQh-TF-3yN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uxg-fi-NPp"/>
+                    <navigationItem key="navigationItem" id="Uxg-fi-NPp">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="trash" catalog="system" id="MJc-Ck-nQG">
+                            <color key="tintColor" red="0.14901961389999999" green="0.2588235438" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="deleteAllTapped:" destination="BYZ-38-t0r" id="3ju-yh-lgl"/>
+                            </connections>
+                        </barButtonItem>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" id="Poi-2j-mUh">
+                            <rect key="frame" x="70" y="5" width="250" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemFillColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="3Ch-cP-JRB">
+                            <color key="tintColor" red="0.14901961389999999" green="0.2588235438" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="searchTapped:" destination="BYZ-38-t0r" id="2zP-jt-13c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchTxtField" destination="Poi-2j-mUh" id="PDo-38-sLM"/>
                         <outlet property="tableView" destination="2zp-hv-ZBC" id="4h6-bb-c3P"/>
@@ -179,6 +191,8 @@
     <color key="tintColor" red="0.14901961389999999" green="0.2588235438" blue="0.27843138579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="background" width="1377" height="1377"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
