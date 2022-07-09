@@ -21,20 +21,20 @@ final class WeatherDetailViewControllerTests: XCTestCase {
     func testWeatherViewController_WhenEnter_WeatherLabelIsEmpty() {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sut = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        let sut = storyboard.instantiateViewController(withIdentifier: "ViewController") as? WeatherViewController
         sut?.loadViewIfNeeded()
         
         XCTAssertEqual(sut?.searchTxtField.text, "", "Search text field was not empty when the viewcontroller initially loaded")
     }
     
-    func testWeatherDetailViewController_WhenEnter_WeatherLabelIsEmpty() {
+    func testWeatherDetailViewController_WhenEnter_WeatherLabelIsInDefaultValue() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let sut = storyboard.instantiateViewController(withIdentifier: "WeatherDetailViewController") as? WeatherDetailViewController
         sut?.loadViewIfNeeded()
         
-        XCTAssertEqual(sut?.weatherTempLbl.text, "")
+        XCTAssertEqual(sut?.weatherTempLbl.text, " °C")
         XCTAssertEqual(sut?.weatherImage.image, nil)
-        XCTAssertEqual(sut?.weatherTxt.text, "")
-        XCTAssertEqual(sut?.humidityLbl.text, "")
+        XCTAssertEqual(sut?.weatherTxt.text, "Its a  day")
+        XCTAssertEqual(sut?.humidityLbl.text, "Humidity: %")
     }
 }

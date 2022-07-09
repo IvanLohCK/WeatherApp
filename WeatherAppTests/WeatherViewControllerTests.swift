@@ -21,7 +21,7 @@ final class WeatherViewControllerTests: XCTestCase {
     func testWeatherViewController_WhenEnter_WeatherLabelIsEmpty() {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let sut = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        let sut = storyboard.instantiateViewController(withIdentifier: "ViewController") as? WeatherViewController
         sut?.loadViewIfNeeded()
         
         XCTAssertEqual(sut?.searchTxtField.text, "", "Search text field was not empty when the viewcontroller initially loaded")
