@@ -20,9 +20,9 @@ class WeatherDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        weatherTempLbl.text = weatherCondition?.tempC
-        weatherTxt.text = weatherCondition?.weatherDesc[0].value
-        humidityLbl.text = weatherCondition?.humidity
+        weatherTempLbl.text = weatherCondition?.tempC ?? ""
+        weatherTxt.text = weatherCondition?.weatherDesc[0].value ?? ""
+        humidityLbl.text = weatherCondition?.humidity ?? ""
         
         if let imageUrl = weatherCondition?.weatherIconURL[0].value {
             weatherImage.downloaded(from: URL(string: imageUrl)!)

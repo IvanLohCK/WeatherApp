@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     var cities: [City] = []
     var viewedCity = [CityDataModel]()
+    let coreData = CoreDataService()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -32,30 +33,11 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadItems()
+        viewedCity = coreData.loadItems()
         tableView.reloadData()
     }
     
-    private func loadItems() {
-        let request: NSFetchRequest<CityDataModel> = CityDataModel.fetchRequest()
-        do {
-            viewedCity = try context.fetch(request)
-            viewedCity = viewedCity.suffix(10)
-            viewedCity = viewedCity.sorted {$0.areaName! < $1.areaName!}
-        } catch {
-            print("error fetching data from context: \(error)")
-        }
-       
-    }
-    
-    private func saveItem() {
-        do {
-            try context.save()
-        } catch {
-            print("error saving context \(error)")
-        }
-    }
-    
+   
     @objc func keyboardWillShow(notification: Notification) {
         if let newFrame = (notification.userInfo?[ UIResponder.keyboardFrameEndUserInfoKey ] as? NSValue)?.cgRectValue {
 
@@ -85,7 +67,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return cities.count
         }
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,12 +117,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             storeCity.longitude = cities[indexPath.row].longitude
             storeCity.latitude = cities[indexPath.row].latitude
             
-            saveItem()
+            coreData.saveItem()
             
         }
         
-        var long = ""
-        var lat = ""
+        let long: String
+        let lat: String
         
         if indexPath.section == 0 {
             long = viewedCity[indexPath.row].longitude!
@@ -151,9 +132,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             lat = cities[indexPath.row].latitude
         }
         
-        
-        
-        WeatherService().getConditions(lat: lat, long: long) { temperatures in
+        WeatherService(urlString: Constant.getCityCondition(lat: lat, long: long)).getConditions() { temperatures, err in
             
             if let temperature = temperatures {
                 DispatchQueue.main.async {
@@ -178,8 +157,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete && indexPath.section == 0{
             context.delete(viewedCity[indexPath.row])
             viewedCity.remove(at: indexPath.row)
-            saveItem()
-            loadItems()
+            coreData.saveItem()
+            viewedCity = coreData.loadItems()
             tableView.reloadData()
         }
     }
@@ -198,7 +177,7 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let cityName = textField.text {
-            WeatherService().getCities(cityName: cityName) { results in
+            WeatherService(urlString: Constant.getCityURL(cityName: cityName)).getCities() { results, err in
 
                 if let results = results {
                     DispatchQueue.main.async {
@@ -211,4 +190,7 @@ extension ViewController: UITextFieldDelegate {
         
         return true
     }
+    
+    
 }
+
