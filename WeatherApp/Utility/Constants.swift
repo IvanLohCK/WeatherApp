@@ -14,6 +14,8 @@ struct Constant {
     static let coreDataModel = "CityDataModel"
     static let coreDataModelMock = "CityDataModelMock"
     
+    static let localizedErrorDesc = "A localized description of an error"
+    
     static func getCityURL(cityName: String) -> String {
         return "https://api.worldweatheronline.com/premium/v1/search.ashx?query=\(cityName)&num_of_results=5&format=json&key=\(Constant.APIKEY)"
     }

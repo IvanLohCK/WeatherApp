@@ -7,12 +7,10 @@
 
 import Foundation
 
-// MARK: - WeatherResponse
 struct WeatherResponse: Codable {
     let data: DataClass
 }
 
-// MARK: - DataClass
 struct DataClass: Codable {
     let request: [Request]
     let currentCondition: [CurrentCondition]
@@ -23,7 +21,6 @@ struct DataClass: Codable {
     }
 }
 
-// MARK: - CurrentCondition
 struct CurrentCondition: Codable {
     let observationTime, tempC, humidity: String
     let weatherIconURL, weatherDesc: [Weather]
@@ -37,12 +34,10 @@ struct CurrentCondition: Codable {
     }
 }
 
-// MARK: - Weather
 struct Weather: Codable {
     let value: String
 }
 
-// MARK: - Request
 struct Request: Codable {
     let type, query: String
 }

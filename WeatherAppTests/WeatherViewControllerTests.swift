@@ -39,24 +39,4 @@ final class WeatherViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.tableView)
     }
     
-//    func testNavigation() {
-//        let coreData = CoreDataService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, entityName: Constant.coreDataModel)
-//        
-//        let sut = makeSUT()
-//        
-//        sut.viewedCity = coreData.loadItems()
-//        
-//        
-//        
-//        if !sut.viewedCity.isEmpty {
-//            sut.saveData(indexPath: IndexPath(item: 0, section: 0))
-//            sut.navigateToDetailView(indexPath: IndexPath(item: 0, section: 0))
-//        }
-//        sut.searchTxtField.text = "London"
-//        sut.search()
-//        
-//        
-//    }
-    
-    
 }

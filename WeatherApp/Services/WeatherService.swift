@@ -17,7 +17,6 @@ struct WeatherService {
         self.urlSession = urlSession
     }
     
-    
     func getCities(completion: @escaping([City]?, WeatherServiceError?) -> Void) {
         
         guard let url = URL(string: urlString) else {
@@ -27,7 +26,7 @@ struct WeatherService {
         
         urlSession.dataTask(with: url) { data, response, err in
             guard let data = data, err == nil else {
-                completion(nil, WeatherServiceError.failedRequest(description: "A localized description of an error"))
+                completion(nil, WeatherServiceError.failedRequest(description: Constant.localizedErrorDesc))
                 return
             }
             
@@ -51,7 +50,7 @@ struct WeatherService {
         
         urlSession.dataTask(with: url) { data, response, err in
             guard let data = data, err == nil else {
-                completion(nil, WeatherServiceError.failedRequest(description: "A localized description of an error"))
+                completion(nil, WeatherServiceError.failedRequest(description: Constant.localizedErrorDesc))
                 return
             }
             

@@ -77,7 +77,7 @@ final class SearchCityWebServiceTests: XCTestCase {
     func testSearchCityWebService_WhenURLRequestFails_ErrorTookPlace() {
         
         let expectation = self.expectation(description: "A failed request expectation")
-        let errorDesc = "A localized description of an error"
+        let errorDesc = Constant.localizedErrorDesc
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
         let urlSession = URLSession(configuration: config)
