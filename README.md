@@ -26,8 +26,8 @@ Tap on the listed city upon searches, you will be routed to the city detailed vi
 Select any iPhone or iPad simulator.
 
 iPhone <br>
-<image src = "images/empty%20state.png" width="200" height="300">
-<image src = "images/search%20city.png" width="200" height="300">
-<image src = "images/city%20detail%20view.png" width="200" height="300">
-<image src = "images/deletion.png" width="200" height="300">
-<image src = "10%20viewed%20city.png" width="200" height="300">
+<image src = "Images/empty%20state.png" width="200" height="300">
+<image src = "Images/search%20city.png" width="200" height="300">
+<image src = "Images/city%20detail%20view.png" width="200" height="300">
+<image src = "Images/deletion.png" width="200" height="300">
+<image src = "Images/10%20viewed%20city.png" width="200" height="300">
