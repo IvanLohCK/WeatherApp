@@ -31,7 +31,7 @@ Tap on the listed city upon searches, you will be routed to the city detailed vi
 - Given that if the user terminate the app(relaunch the app), the user will still be able to see the ordered list of the recent 10 cities that the user previously seen.
 
 
-iPhone <br>
+
 <image src = "Images/empty%20state.png" width="150" height="300">
 <image src = "Images/search%20city.png" width="150" height="300">
 <image src = "Images/city%20detail%20view.png" width="150" height="300">
