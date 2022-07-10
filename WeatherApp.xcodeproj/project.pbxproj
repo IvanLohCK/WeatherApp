@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C5413EA2879486C00FE0C8D /* UIImageViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5413E92879486C00FE0C8D /* UIImageViewExtensionTests.swift */; };
+		2C3E2FBB287A7D4000EF0B46 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E2FBA287A7D4000EF0B46 /* CoreDataTests.swift */; };
+		2C3E2FBD287A7F5200EF0B46 /* CoreDataCRUDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E2FBC287A7F5200EF0B46 /* CoreDataCRUDTests.swift */; };
+		2C5413EA2879486C00FE0C8D /* ExtensionsAndConstantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5413E92879486C00FE0C8D /* ExtensionsAndConstantTests.swift */; };
 		2C5413F12879540F00FE0C8D /* SearchCityWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5413F02879540F00FE0C8D /* SearchCityWebServiceTests.swift */; };
 		2C5413F32879637900FE0C8D /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5413F22879637900FE0C8D /* MockURLProtocol.swift */; };
 		2C5413F528796F5200FE0C8D /* WeatherServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5413F428796F5200FE0C8D /* WeatherServiceError.swift */; };
@@ -42,8 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C3E2FBA287A7D4000EF0B46 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		2C3E2FBC287A7F5200EF0B46 /* CoreDataCRUDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCRUDTests.swift; sourceTree = "<group>"; };
 		2C5413E72879486C00FE0C8D /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C5413E92879486C00FE0C8D /* UIImageViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensionTests.swift; sourceTree = "<group>"; };
+		2C5413E92879486C00FE0C8D /* ExtensionsAndConstantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndConstantTests.swift; sourceTree = "<group>"; };
 		2C5413F02879540F00FE0C8D /* SearchCityWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityWebServiceTests.swift; sourceTree = "<group>"; };
 		2C5413F22879637900FE0C8D /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		2C5413F428796F5200FE0C8D /* WeatherServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceError.swift; sourceTree = "<group>"; };
@@ -90,12 +94,14 @@
 		2C5413E82879486C00FE0C8D /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				2C5413E92879486C00FE0C8D /* UIImageViewExtensionTests.swift */,
 				2C5413F22879637900FE0C8D /* MockURLProtocol.swift */,
 				2C5413F02879540F00FE0C8D /* SearchCityWebServiceTests.swift */,
 				2C5413F62879758C00FE0C8D /* GetCityConditionWebServiceTests.swift */,
-				2C77BFCC2879818700FBDC16 /* WeatherViewControllerTests.swift */,
 				2C77BFCE2879899100FBDC16 /* WeatherDetailViewControllerTests.swift */,
+				2C3E2FBA287A7D4000EF0B46 /* CoreDataTests.swift */,
+				2C3E2FBC287A7F5200EF0B46 /* CoreDataCRUDTests.swift */,
+				2C5413E92879486C00FE0C8D /* ExtensionsAndConstantTests.swift */,
+				2C77BFCC2879818700FBDC16 /* WeatherViewControllerTests.swift */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -300,10 +306,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C77BFCF2879899100FBDC16 /* WeatherDetailViewControllerTests.swift in Sources */,
+				2C3E2FBB287A7D4000EF0B46 /* CoreDataTests.swift in Sources */,
 				2C5413F32879637900FE0C8D /* MockURLProtocol.swift in Sources */,
-				2C5413EA2879486C00FE0C8D /* UIImageViewExtensionTests.swift in Sources */,
+				2C5413EA2879486C00FE0C8D /* ExtensionsAndConstantTests.swift in Sources */,
 				2C5413F72879758C00FE0C8D /* GetCityConditionWebServiceTests.swift in Sources */,
 				2C77BFCD2879818700FBDC16 /* WeatherViewControllerTests.swift in Sources */,
+				2C3E2FBD287A7F5200EF0B46 /* CoreDataCRUDTests.swift in Sources */,
 				2C5413F12879540F00FE0C8D /* SearchCityWebServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController {
     
     var cities: [City] = []
     var viewedCity = [CityDataModel]()
-    let coreData = CoreDataService()
+    let coreData = CoreDataService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, entityName: Constant.coreDataModel)
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -63,13 +63,7 @@ class WeatherViewController: UIViewController {
     func saveData(indexPath: IndexPath) {
         if indexPath.section == 1 && !viewedCity.contains(where: {$0.latitude == cities[indexPath.row].latitude}) && !viewedCity.contains(where: {$0.longitude == cities[indexPath.row].longitude}) {
             
-            let storeCity = CityDataModel(context: context)
-            storeCity.areaName = cities[indexPath.row].areaName[0].value
-            storeCity.region = cities[indexPath.row].region[0].value
-            storeCity.longitude = cities[indexPath.row].longitude
-            storeCity.latitude = cities[indexPath.row].latitude
-            
-            coreData.saveItem()
+            coreData.add(areaName: cities[indexPath.row].areaName[0].value, region: cities[indexPath.row].region[0].value, longitude: cities[indexPath.row].longitude, latitude: cities[indexPath.row].latitude)
         }
     }
     
@@ -206,9 +200,10 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == 0{
-            coreData.deleteItem(indexPath: indexPath, viewedCity: viewedCity)
+            let removingItem = viewedCity[indexPath.row]
+            coreData.delete(item: removingItem)
+            
             viewedCity.remove(at: indexPath.row)
-            coreData.saveItem()
             viewedCity = coreData.loadItems()
             tableView.reloadData()
         }
@@ -238,7 +233,6 @@ extension WeatherViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         search()
-        
         return true
     }
     
