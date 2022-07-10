@@ -7,7 +7,7 @@ This is a weather Apps using World Weather Online API (https://www.worldweathero
 
 Compatible with any iPhone/iPad devices. 
 
-<h2><b>How to test the app?</b></h2>
+<h2><b>How to use the app?</b></h2>
 Download and unzip the project, then run it on Xcode by double clicking *WeatherApp.xcodeproj*. 
 
 On the navigation bar, top left is the delete button where user are able to clear all the recently viewed cities. 
