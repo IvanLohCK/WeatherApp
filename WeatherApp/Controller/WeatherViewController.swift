@@ -130,6 +130,7 @@ class WeatherViewController: UIViewController {
     
     @IBAction func searchTapped(_ sender: Any) {
         search()
+        searchTxtField.resignFirstResponder()
     }
     
 }
@@ -233,6 +234,7 @@ extension WeatherViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         search()
+        textField.resignFirstResponder()
         return true
     }
     
