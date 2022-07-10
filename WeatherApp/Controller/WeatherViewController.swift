@@ -226,9 +226,7 @@ extension WeatherViewController: UITextFieldDelegate {
         if textField.text == "" {
             cities = []
             tableView.reloadData()
-        } else {
-            search()
-        }
+        } 
         
     }
     
