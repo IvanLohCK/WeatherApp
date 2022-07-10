@@ -19,15 +19,16 @@ On the navigation bar, top right is the search button
 Tap on the listed city upon searches, you will be routed to the city detailed view screen.
 
 <h2><b>Features</b></h2>
-1. Able to search for city name and will be displaying list of avalable cities that pattern matches on what user typed.
 
-2. User able to tap on the particular city name and will be routed to the detailed view showing the weatherImage, humidity, temperature and weather description
+- Able to search for city name and will be displaying list of avalable cities that pattern matches on what user typed.
 
-3. There will be an empty state view when the user have not viewed any City's weather before
+- User able to tap on the particular city name and will be routed to the detailed view showing the weatherImage, humidity, temperature and weather description
 
-4. If user have viewed any city's weather before, under Recently Viewed section, user will be able to see a ordered list of the recent 10 cities that the user recently viewed in alphabetically order.
+- There will be an empty state view when the user have not viewed any City's weather before
 
-5. Given that if the user terminate the app(relaunch the app), the user will still be able to see the ordered list of the recent 10 cities that the user previously seen.
+- If user have viewed any city's weather before, under Recently Viewed section, user will be able to see a ordered list of the recent 10 cities that the user recently viewed in alphabetically order.
+
+- Given that if the user terminate the app(relaunch the app), the user will still be able to see the ordered list of the recent 10 cities that the user previously seen.
 
 
 iPhone <br>
